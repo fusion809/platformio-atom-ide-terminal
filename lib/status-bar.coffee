@@ -1,7 +1,7 @@
 {CompositeDisposable} = require 'atom'
 {$, View} = require 'atom-space-pen-views'
 
-PlatformIOTerminalView = require './view'
+TerminalFusionView = require './view'
 StatusIcon = require './status-icon'
 
 os = require 'os'
@@ -14,7 +14,7 @@ class StatusBar extends View
   returnFocus: null
 
   @content: ->
-    @div class: 'platformio-ide-terminal status-bar', tabindex: -1, =>
+    @div class: 'terminal-fusionio-ide-terminal status-bar', tabindex: -1, =>
       @i class: "icon icon-plus", click: 'newTerminalView', outlet: 'plusBtn'
       @ul class: "list-inline status-container", tabindex: '-1', outlet: 'statusContainer', is: 'space-pen-ul'
       @i class: "icon icon-x", click: 'closeAll', outlet: 'closeBtn'
@@ -23,34 +23,33 @@ class StatusBar extends View
     @subscriptions = new CompositeDisposable()
 
     @subscriptions.add atom.commands.add 'atom-workspace',
-      'platformio-ide-terminal:new': => @newTerminalView()
-      'platformio-ide-terminal:toggle': => @toggle()
-      'platformio-ide-terminal:next': =>
+      'terminal-fusion:new': => @newTerminalView()
+      'terminal-fusion:toggle': => @toggle()
+      'terminal-fusion:next': =>
         return unless @activeTerminal
         return if @activeTerminal.isAnimating()
         @activeTerminal.open() if @activeNextTerminalView()
-      'platformio-ide-terminal:prev': =>
+      'terminal-fusion:prev': =>
         return unless @activeTerminal
         return if @activeTerminal.isAnimating()
         @activeTerminal.open() if @activePrevTerminalView()
-      'platformio-ide-terminal:close': => @destroyActiveTerm()
-      'platformio-ide-terminal:close-all': => @closeAll()
-      'platformio-ide-terminal:rename': => @runInActiveView (i) -> i.rename()
-      'platformio-ide-terminal:insert-selected-text': => @runInActiveView (i) -> i.insertSelection()
-      'platformio-ide-terminal:insert-text': => @runInActiveView (i) -> i.inputDialog()
-      'platformio-ide-terminal:fullscreen': => @activeTerminal.maximize()
+      'terminal-fusion:close': => @destroyActiveTerm()
+      'terminal-fusion:close-all': => @closeAll()
+      'terminal-fusion:rename': => @runInActiveView (i) -> i.rename()
+      'terminal-fusion:insert-selected-text': => @runInActiveView (i) -> i.insertSelection()
+      'terminal-fusion:insert-text': => @runInActiveView (i) -> i.inputDialog()
 
     @subscriptions.add atom.commands.add '.xterm',
-      'platformio-ide-terminal:paste': => @runInActiveView (i) -> i.paste()
-      'platformio-ide-terminal:copy': => @runInActiveView (i) -> i.copy()
+      'terminal-fusion:paste': => @runInActiveView (i) -> i.paste()
+      'terminal-fusion:copy': => @runInActiveView (i) -> i.copy()
 
     @subscriptions.add atom.workspace.onDidChangeActivePaneItem (item) =>
       return unless item?
 
-      if item.constructor.name is "PlatformIOTerminalView"
+      if item.constructor.name is "TerminalFusionView"
         setTimeout item.focus, 100
       else if item.constructor.name is "TextEditor"
-        mapping = atom.config.get('platformio-ide-terminal.core.mapTerminalsTo')
+        mapping = atom.config.get('terminal-fusion.core.mapTerminalsTo')
         return if mapping is 'None'
 
         switch mapping
@@ -63,7 +62,7 @@ class StatusBar extends View
         if prevTerminal != nextTerminal
           if not nextTerminal?
             if item.getTitle() isnt 'untitled'
-              if atom.config.get('platformio-ide-terminal.core.mapTerminalsToAutoOpen')
+              if atom.config.get('terminal-fusion.core.mapTerminalsToAutoOpen')
                 nextTerminal = @createTerminalView()
           else
             @setActiveTerminalView(nextTerminal)
@@ -84,7 +83,7 @@ class StatusBar extends View
     @statusContainer.on 'drop', @onDrop
 
     handleBlur = =>
-      if terminal = PlatformIOTerminalView.getFocusedTerminal()
+      if terminal = TerminalFusionView.getFocusedTerminal()
         @returnFocus = @terminalViewForTerminal(terminal)
         terminal.blur()
 
@@ -106,23 +105,23 @@ class StatusBar extends View
     @attach()
 
   registerContextMenu: ->
-    @subscriptions.add atom.commands.add '.platformio-ide-terminal.status-bar',
-      'platformio-ide-terminal:status-red': @setStatusColor
-      'platformio-ide-terminal:status-orange': @setStatusColor
-      'platformio-ide-terminal:status-yellow': @setStatusColor
-      'platformio-ide-terminal:status-green': @setStatusColor
-      'platformio-ide-terminal:status-blue': @setStatusColor
-      'platformio-ide-terminal:status-purple': @setStatusColor
-      'platformio-ide-terminal:status-pink': @setStatusColor
-      'platformio-ide-terminal:status-cyan': @setStatusColor
-      'platformio-ide-terminal:status-magenta': @setStatusColor
-      'platformio-ide-terminal:status-default': @clearStatusColor
-      'platformio-ide-terminal:context-close': (event) ->
+    @subscriptions.add atom.commands.add '.terminal-fusion.status-bar',
+      'terminal-fusion:status-red': @setStatusColor
+      'terminal-fusion:status-orange': @setStatusColor
+      'terminal-fusion:status-yellow': @setStatusColor
+      'terminal-fusion:status-green': @setStatusColor
+      'terminal-fusion:status-blue': @setStatusColor
+      'terminal-fusion:status-purple': @setStatusColor
+      'terminal-fusion:status-pink': @setStatusColor
+      'terminal-fusion:status-cyan': @setStatusColor
+      'terminal-fusion:status-magenta': @setStatusColor
+      'terminal-fusion:status-default': @clearStatusColor
+      'terminal-fusion:context-close': (event) ->
         $(event.target).closest('.pio-terminal-status-icon')[0].terminalView.destroy()
-      'platformio-ide-terminal:context-hide': (event) ->
+      'terminal-fusion:context-hide': (event) ->
         statusIcon = $(event.target).closest('.pio-terminal-status-icon')[0]
         statusIcon.terminalView.hide() if statusIcon.isActive()
-      'platformio-ide-terminal:context-rename': (event) ->
+      'terminal-fusion:context-rename': (event) ->
         $(event.target).closest('.pio-terminal-status-icon')[0].rename()
 
   registerPaneSubscription: ->
@@ -132,8 +131,8 @@ class StatusBar extends View
 
       tabBar.on 'drop', (event) => @onDropTabBar(event, pane)
       tabBar.on 'dragstart', (event) ->
-        return unless event.target.item?.constructor.name is 'PlatformIOTerminalView'
-        event.originalEvent.dataTransfer.setData 'platformio-ide-terminal-tab', 'true'
+        return unless event.target.item?.constructor.name is 'TerminalFusionView'
+        event.originalEvent.dataTransfer.setData 'terminal-fusion-tab', 'true'
       pane.onDidDestroy -> tabBar.off 'drop', @onDropTabBar
 
   createTerminalView: (autoRun) ->
@@ -152,7 +151,7 @@ class StatusBar extends View
 
     home = if process.platform is 'win32' then process.env.HOMEPATH else process.env.HOME
 
-    switch atom.config.get('platformio-ide-terminal.core.workingDirectory')
+    switch atom.config.get('terminal-fusion.core.workingDirectory')
       when 'Project' then pwd = projectFolder or editorFolder or home
       when 'Active File' then pwd = editorFolder or projectFolder or home
       else pwd = home
@@ -160,19 +159,19 @@ class StatusBar extends View
     id = editorPath or projectFolder or home
     id = filePath: id, folderPath: path.dirname(id)
 
-    shell = atom.config.get 'platformio-ide-terminal.core.shell'
-    shellArguments = atom.config.get 'platformio-ide-terminal.core.shellArguments'
+    shell = atom.config.get 'terminal-fusion.core.shell'
+    shellArguments = atom.config.get 'terminal-fusion.core.shellArguments'
     args = shellArguments.split(/\s+/g).filter (arg) -> arg
 
     statusIcon = new StatusIcon()
-    platformIOTerminalView = new PlatformIOTerminalView(id, pwd, statusIcon, this, shell, args, autoRun)
-    statusIcon.initialize(platformIOTerminalView)
+    terminalFusionTerminalView = new TerminalFusionTerminalView(id, pwd, statusIcon, this, shell, args, autoRun)
+    statusIcon.initialize(terminalFusionView)
 
-    platformIOTerminalView.attach()
+    terminalFusionView.attach()
 
-    @terminalViews.push platformIOTerminalView
+    @terminalViews.push terminalFusionView
     @statusContainer.append statusIcon
-    return platformIOTerminalView
+    return terminalFusionView
 
   activeNextTerminalView: ->
     index = @indexOf(@activeTerminal)
@@ -294,14 +293,14 @@ class StatusBar extends View
 
   setStatusColor: (event) ->
     color = event.type.match(/\w+$/)[0]
-    color = atom.config.get("platformio-ide-terminal.iconColors.#{color}").toRGBAString()
+    color = atom.config.get("terminal-fusion.iconColors.#{color}").toRGBAString()
     $(event.target).closest('.pio-terminal-status-icon').css 'color', color
 
   clearStatusColor: (event) ->
     $(event.target).closest('.pio-terminal-status-icon').css 'color', ''
 
   onDragStart: (event) =>
-    event.originalEvent.dataTransfer.setData 'platformio-ide-terminal-panel', 'true'
+    event.originalEvent.dataTransfer.setData 'terminal-fusion-panel', 'true'
 
     element = $(event.target).closest('.pio-terminal-status-icon')
     element.addClass 'is-dragging'
@@ -316,7 +315,7 @@ class StatusBar extends View
   onDragOver: (event) =>
     event.preventDefault()
     event.stopPropagation()
-    unless event.originalEvent.dataTransfer.getData('platformio-ide-terminal') is 'true'
+    unless event.originalEvent.dataTransfer.getData('terminal-fusion') is 'true'
       return
 
     newDropTargetIndex = @getDropTargetIndex(event)
@@ -333,8 +332,8 @@ class StatusBar extends View
 
   onDrop: (event) =>
     {dataTransfer} = event.originalEvent
-    panelEvent = dataTransfer.getData('platformio-ide-terminal-panel') is 'true'
-    tabEvent = dataTransfer.getData('platformio-ide-terminal-tab') is 'true'
+    panelEvent = dataTransfer.getData('terminal-fusion-panel') is 'true'
+    tabEvent = dataTransfer.getData('terminal-fusion-tab') is 'true'
     return unless panelEvent or tabEvent
 
     event.preventDefault()
@@ -362,7 +361,7 @@ class StatusBar extends View
 
   onDropTabBar: (event, pane) =>
     {dataTransfer} = event.originalEvent
-    return unless dataTransfer.getData('platformio-ide-terminal-panel') is 'true'
+    return unless dataTransfer.getData('terminal-fusion-panel') is 'true'
 
     event.preventDefault()
     event.stopPropagation()

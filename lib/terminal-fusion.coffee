@@ -2,19 +2,14 @@ module.exports =
   statusBar: null
 
   activate: ->
+    @statusBar = new (require './status-bar')()
 
   deactivate: ->
-    @statusBarTile?.destroy()
-    @statusBarTile = null
+    @statusBar.destroy()
 
   provideRunInTerminal: ->
     run: (command) =>
-      @statusBarTile.runCommandInNewTerminal command
-    getTerminalViews: () =>
-      @statusBarTile.terminalViews
-
-  consumeStatusBar: (statusBarProvider) ->
-    @statusBarTile = new (require './status-bar')(statusBarProvider)
+      @statusBar.runCommandInNewTerminal command
 
   config:
     toggles:
@@ -33,7 +28,7 @@ module.exports =
           default: true
         runInsertedText:
           title: 'Run Inserted Text'
-          description: 'Run text inserted via `platformio-ide-terminal:insert-text` as a command? **This will append an end-of-line character to input.**'
+          description: 'Run text inserted via `terminal-fusion:insert-text` as a command? **This will append an end-of-line character to input.**'
           type: 'boolean'
           default: true
     core:
@@ -112,10 +107,11 @@ module.exports =
           title: 'Theme'
           description: 'Select a theme for the terminal.'
           type: 'string'
-          default: 'standard'
+          default: 'hornix'
           enum: [
             'standard',
             'inverse',
+            'hornix',
             'grass',
             'homebrew',
             'man-page',
