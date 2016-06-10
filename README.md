@@ -6,7 +6,7 @@ A terminal package for Atom, complete with themes, API and more. My name in its 
 
 `terminal-fusion` stays in the bottom of your editor while you work.
 
-Click on a status icon to toggle that terminal (or ``ctrl-` ``). Right click the status icon for a list of available commands. From the right-click menu you can color code the status icon as well as hide or close the terminal instance.
+Click on a status icon to toggle that terminal (or ``ctrl-` ``). Right click the status icon for a list of available commands. From the right-click menu you can colour code the status icon as well as hide or close the terminal instance.
 
 ### Terminal
 You can open the last active terminal with the `terminal-fusion:toggle` command (Default:`` ctrl-` ``).  If no terminal instances are available, then a new one will be created. The same toggle command is used to hide the currently active terminal.
@@ -52,8 +52,8 @@ Available via the status icon context menu.
 
 ![](https://github.com/jeremyramin/terminal-plus/raw/master/resources/status-icon_rename-dialog.png)
 
-### Color Coding
-Color code your status icons!
+### Colour coding
+Colour code your status icons!
 
 ![](https://github.com/jeremyramin/terminal-plus/raw/master/resources/status-icon_color_coding.png)
 
