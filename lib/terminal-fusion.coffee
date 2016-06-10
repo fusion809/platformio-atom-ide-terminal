@@ -2,14 +2,19 @@ module.exports =
   statusBar: null
 
   activate: ->
-    @statusBar = new (require './status-bar')()
 
   deactivate: ->
-    @statusBar.destroy()
+    @statusBarTile?.destroy()
+    @statusBarTile = null
 
   provideRunInTerminal: ->
     run: (command) =>
-      @statusBar.runCommandInNewTerminal command
+      @statusBarTile.runCommandInNewTerminal command
+    getTerminalViews: () =>
+      @statusBarTile.terminalViews
+
+  consumeStatusBar: (statusBarProvider) ->
+    @statusBarTile = new (require './status-bar')(statusBarProvider)
 
   config:
     toggles:
@@ -75,7 +80,7 @@ module.exports =
           title: 'Working Directory'
           description: 'Which directory should be the present working directory when a new terminal is made?'
           type: 'string'
-          default: 'Project'
+          default: 'Active File'
           enum: ['Home', 'Project', 'Active File']
     style:
       type: 'object'
@@ -107,11 +112,11 @@ module.exports =
           title: 'Theme'
           description: 'Select a theme for the terminal.'
           type: 'string'
-          default: 'hornix'
+          default: 'linux'
           enum: [
             'standard',
             'inverse',
-            'hornix',
+            'linux',
             'grass',
             'homebrew',
             'man-page',

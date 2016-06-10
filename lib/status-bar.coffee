@@ -14,7 +14,7 @@ class StatusBar extends View
   returnFocus: null
 
   @content: ->
-    @div class: 'terminal-fusionio-ide-terminal status-bar', tabindex: -1, =>
+    @div class: 'terminal-fusion status-bar', tabindex: -1, =>
       @i class: "icon icon-plus", click: 'newTerminalView', outlet: 'plusBtn'
       @ul class: "list-inline status-container", tabindex: '-1', outlet: 'statusContainer', is: 'space-pen-ul'
       @i class: "icon icon-x", click: 'closeAll', outlet: 'closeBtn'
@@ -38,6 +38,7 @@ class StatusBar extends View
       'terminal-fusion:rename': => @runInActiveView (i) -> i.rename()
       'terminal-fusion:insert-selected-text': => @runInActiveView (i) -> i.insertSelection()
       'terminal-fusion:insert-text': => @runInActiveView (i) -> i.inputDialog()
+      'terminal-fusion:fullscreen': => @activeTerminal.maximize()
 
     @subscriptions.add atom.commands.add '.xterm',
       'terminal-fusion:paste': => @runInActiveView (i) -> i.paste()
@@ -164,14 +165,14 @@ class StatusBar extends View
     args = shellArguments.split(/\s+/g).filter (arg) -> arg
 
     statusIcon = new StatusIcon()
-    terminalFusionTerminalView = new TerminalFusionTerminalView(id, pwd, statusIcon, this, shell, args, autoRun)
-    statusIcon.initialize(terminalFusionView)
+    terminalPlusView = new TerminalFusionView(id, pwd, statusIcon, this, shell, args, autoRun)
+    statusIcon.initialize(terminalPlusView)
 
-    terminalFusionView.attach()
+    terminalPlusView.attach()
 
-    @terminalViews.push terminalFusionView
+    @terminalViews.push terminalPlusView
     @statusContainer.append statusIcon
-    return terminalFusionView
+    return terminalPlusView
 
   activeNextTerminalView: ->
     index = @indexOf(@activeTerminal)

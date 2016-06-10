@@ -1,3 +1,7 @@
+## 2.1.0 - terminal-fusion
+* Adding `linux` theme
+* Forked by Brenton Horne to terminal-fusion
+
 ## 2.0.10 - PlatformIO
 
 * Add fullscreen command

@@ -28,7 +28,7 @@ describe "TerminalFusion", ->
       runs ->
         expect(workspaceElement.querySelector('.terminal-fusion')).toExist()
 
-        TerminalFusionElement = workspaceElement.querySelector('.terminal-fusion')
+        terminalFusionElement = workspaceElement.querySelector('.terminal-fusion')
         expect(terminalFusionElement).toExist()
 
         statusBar = atom.workspace.panelForItem(terminalFusionElement)

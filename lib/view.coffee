@@ -24,7 +24,7 @@ class TerminalFusionView extends View
   tabView: false
 
   @content: ->
-    @div class: 'terminal-fusion terminal-view', outlet: 'terminalFusionView', =>
+    @div class: 'terminal-fusion terminal-view', outlet: 'terminalPlusView', =>
       @div class: 'panel-divider', outlet: 'panelDivider'
       @div class: 'btn-toolbar', outlet:'toolbar', =>
         @button outlet: 'closeBtn', class: 'btn inline-block-tight right', click: 'destroy', =>
