@@ -1,5 +1,5 @@
-# Brenton's (fusion809) Terminal
-[![](http://i.imgur.com/qYa5q9S.png)]
+# Brenton's (fusion809) Terminal[![Build Status](https://travis-ci.org/fusion809/terminal-fusion.svg?branch=master)](https://travis-ci.org/fusion809/terminal-fusion)
+![](http://i.imgur.com/qYa5q9S.png)
 A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it.
 
 ## Usage
