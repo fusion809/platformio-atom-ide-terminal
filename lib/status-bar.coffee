@@ -91,8 +91,10 @@ class StatusBar extends View
     handleFocus = =>
       if @returnFocus
         setTimeout =>
-          @returnFocus.focus()
-          @returnFocus = null
+          if @returnFocus
+              tempFocus = @returnFocus
+              @returnFocus = null
+              tempFocus.focus() if tempFocus
         , 100
 
     window.addEventListener 'blur', handleBlur
