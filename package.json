@@ -3,7 +3,7 @@
   "main": "./lib/terminal-fusion",
   "version": "2.1.4",
   "readme": "./README.md",
-  "description": "A terminal package for Atom, complete with themes, API and more for PlatformIO IDE. Fork of terminal-plus.",
+  "description": "A terminal package for Atom, complete with themes, API and more. Fork of PlatformIO Terminal.",
   "author": "Jeremy Ebneyamin",
   "contributors": [
     {
