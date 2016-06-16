@@ -1,4 +1,4 @@
-TerminalFusionView = require '../lib/terminal-fusion-view'
+TerminalFusionView = require '../lib/view'
 
 describe "TerminalFusionView", ->
   it "has one valid test", ->
