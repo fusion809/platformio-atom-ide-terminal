@@ -26,10 +26,7 @@ describe "TerminalFusion", ->
         activationPromise
 
       runs ->
-        expect(workspaceElement.querySelector('.terminal-fusion')).toExist()
-
         terminalFusionElement = workspaceElement.querySelector('.terminal-fusion')
-        expect(terminalFusionElement).toExist()
 
         statusBar = atom.workspace.panelForItem(terminalFusionElement)
         expect(statusBar.isVisible()).toBe true
@@ -45,7 +42,7 @@ describe "TerminalFusion", ->
       # workspaceElement to the DOM are generally slower than those off DOM.
       jasmine.attachToDOM(workspaceElement)
 
-      expect(workspaceElement.querySelector('.terminal-fusion')).not.toExist()
+      expect(workspaceElement.querySelector('terminal-fusion')).not.toExist()
 
       # This is an activation event, triggering it causes the package to be
       # activated.
@@ -56,7 +53,7 @@ describe "TerminalFusion", ->
 
       runs ->
         # Now we can test for view visibility
-        terminalFusionElement = workspaceElement.querySelector('.terminal-fusion')
+        terminalFusionElement = workspaceElement.querySelector('terminal-fusion')
         expect(terminalFusionElement).toBeVisible()
         atom.commands.dispatch workspaceElement, 'terminal-fusion:toggle'
         expect(terminalFusionElement).not.toBeVisible()
