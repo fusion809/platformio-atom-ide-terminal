@@ -27,6 +27,7 @@
   "homepage": "https://atom.io/packages/terminal-fusion",
   "repository": "https://github.com/fusion809/terminal-fusion",
   "license": "MIT",
+  "licenseFilename": "LICENSE.md",
   "engines": {
     "atom": ">=1.2.0"
   },
