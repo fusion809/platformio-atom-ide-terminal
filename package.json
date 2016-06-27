@@ -2,7 +2,7 @@
   "name": "terminal-fusion",
   "main": "./lib/terminal-fusion",
   "version": "2.1.7",
-  "readme": "./README.md",
+  "readmeFilename": "README.md",
   "description": "A terminal package for Atom, complete with themes, API and more. Fork of PlatformIO Terminal.",
   "author": "Jeremy Ebneyamin",
   "contributors": [
