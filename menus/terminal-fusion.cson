@@ -1,5 +1,5 @@
 'context-menu':
-  '.terminal-fusion .pio-terminal-status-icon': [
+  '.terminal-fusion .fusion-terminal-status-icon': [
     {label: 'Red', command: 'terminal-fusion:status-red'},
     {label: 'Orange', command: 'terminal-fusion:status-orange'},
     {label: 'Yellow', command: 'terminal-fusion:status-yellow'},
