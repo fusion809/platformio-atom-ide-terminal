@@ -1,15 +1,12 @@
 {Task, CompositeDisposable, Emitter} = require 'atom'
-{$, View} = require 'atom-space-pen-views'
-
-Pty = require.resolve './process'
-Terminal = require 'term.js'
-InputDialog = null
-
-path = require 'path'
-os = require 'os'
-
-lastOpenedView = null
-lastActiveElement = null
+{$, View}                            = require 'atom-space-pen-views'
+Pty                                  = require.resolve './process'
+Terminal                             = require 'term.js'
+InputDialog                          = null
+path                                 = require 'path'
+os                                   = require 'os'
+lastOpenedView                       = null
+lastActiveElement                    = null
 
 module.exports =
 class TerminalFusionView extends View

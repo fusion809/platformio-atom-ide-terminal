@@ -1,5 +1,5 @@
 Dialog = require "./dialog"
-os = require "os"
+os     = require "os"
 
 module.exports =
 class InputDialog extends Dialog

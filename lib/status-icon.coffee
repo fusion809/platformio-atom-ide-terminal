@@ -1,6 +1,6 @@
 {CompositeDisposable} = require 'atom'
-
-RenameDialog = null
+RenameDialog          = null
+{View}                = require 'space-pen'
 
 module.exports =
 class StatusIcon extends HTMLElement
@@ -31,11 +31,11 @@ class StatusIcon extends HTMLElement
 
   setupTooltip: ->
 
-    onMouseEnter = (event) =>
+    onMouseEnter              = (event) =>
       return if event.detail is 'terminal-fusion'
       @updateTooltip()
 
-    @mouseEnterSubscription = dispose: =>
+    @mouseEnterSubscription   = dispose: =>
       @removeEventListener('mouseenter', onMouseEnter)
       @mouseEnterSubscription = null
 
