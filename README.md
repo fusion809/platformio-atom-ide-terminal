@@ -1,6 +1,6 @@
 # Brenton's (fusion809) Terminal
 ![](http://i.imgur.com/qYa5q9S.png)
-A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it. It has been forked from the `platformio-ide-terminal` package, and is designed specifically for Linux platforms. If you are using macOS or Windows NT I would recommend using the `platformio-ide-terminal` package instead. 
+A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it. It has been forked from the `platformio-ide-terminal` package, and is designed specifically for Linux platforms. If you are using macOS or Windows NT I would recommend using the `platformio-ide-terminal` package instead.
 
 ## Usage
 
@@ -9,7 +9,7 @@ A terminal package for Atom, complete with themes, API and more. My name in its 
 Click on a status icon to toggle that terminal (or ``ctrl-` ``). Right click the status icon for a list of available commands. From the right-click menu you can colour code the status icon as well as hide or close the terminal instance.
 
 ### Terminal
-You can open the last active terminal with the `terminal-fusion:toggle` command (Default:`` ctrl-` ``).  If no terminal instances are available, then a new one will be created. The same toggle command is used to hide the currently active terminal.
+You can open the last active terminal with the `terminal-fusion:toggle` command (keymap:`` ctrl-` ``).  If no terminal instances are available, then a new one will be created. The same toggle command is used to hide the currently active terminal.
 
 From there you can begin typing into the terminal. By default the terminal will change directory into the project folder if possible. The default working directory can be changed in the settings to the home directory or to the active file directory.
 
