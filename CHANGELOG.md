@@ -1,5 +1,5 @@
 ## 2.3.1 - terminal-fusion
-Commit [0c46af1](/commit/0c46af1):
+Commit [0c46af1](https://github.com/fusion809/terminal-fusion/commit/0c46af1):
 * Added space-pen to package.json list of dependencies.
 
 ## 2.3.0 - terminal-fusion
