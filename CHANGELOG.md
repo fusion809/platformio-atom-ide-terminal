@@ -1,5 +1,67 @@
+## 2.3.1 - terminal-fusion
+Commit 0c46af1:
+* Added space-pen to package.json list of dependencies.
+
+## 2.3.0 - terminal-fusion
+Commit 49fd161:
+* Edit to README.md, adding mention of upstream project, platformio/platformio-atom-ide-terminal and Linux-only compatibility.
+* Removed compatibility with macOS and Windows NT from keymap and other sources.
+* Make minor, mostly aesthetic aesthetic changes to Coffee libraries (for example, making equal signs align).
+
+## 2.2.3 - terminal-fusion
+* Adjusted pty.js dependency so that terminal-fusion, unlike platformio-ide-terminal, will work even when built against later versions of Electron (>v1.2.x). See tensor5/arch-atom#12 for details.
+
+## 2.2.2 - terminal-fusion
+In commit 075aea4 the package's incompatibility with its upstream package, platformio-ide-terminal, was removed. So now terminal-fusion and platformio-ide-terminal can be installed simultaneously to one another.
+
+## 2.2.1 - terminal-fusion
+Commit 42b1dd9:
+* Updated the copyright notice
+* Updated the Linux theme
+* Deleted styles/platformio-ide-terminal.less.
+
+## 2.2.0 - terminal-fusion
+Commit 530f090:
+* Replaced `readme` field in `package.json` with the `readmeFilename` field of `README.md`.
+
+## 2.1.7 - terminal-fusion
+Commit ca4c7b7:
+* Updated README
+* Added `coffee-script` to devDependencies of package.
+
+## 2.1.6 - terminal-fusion
+Commits:
+* 97809a3
+* a006ced
+* 364eb03
+* 4158597
+
+In these commits:
+* Travis tests were deleted as they were failing, even though the package was working.
+
+## 2.1.5 - terminal-fusion
+Commit c5fa49c:
+* Adjusted `description` field in package.json.
+
+## 2.1.4 - terminal-fusion
+Commits:
+* d996037 - updated README; travis tests were added.
+* cad49e5 - made minor edits to README and implementing fix provided at [jeremyramin/terminal-plus#270](jeremyramin/terminal-plus#270)
+
+## 2.1.3 - terminal-fusion
+Commit 382ece6:
+* Changing English variety in README from American English to British English.
+
+## 2.1.2 - terminal-fusion
+Commit 6890a64:
+* Added screenshot to README
+
+## 2.1.1 - terminal-fusion
+Commit 7c75224:
+* Changed README to fit the new package name. 
+
 ## 2.1.0 - terminal-fusion
-* Adding `linux` theme
+* Added `linux` theme
 * Forked by Brenton Horne to terminal-fusion
 
 ## 2.0.10 - PlatformIO
