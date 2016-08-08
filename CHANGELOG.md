@@ -1,5 +1,5 @@
 ## 2.3.1 - terminal-fusion
-Commit 0c46af1:
+Commit [0c46af1](0c46af1):
 * Added space-pen to package.json list of dependencies.
 
 ## 2.3.0 - terminal-fusion
@@ -58,7 +58,7 @@ Commit 6890a64:
 
 ## 2.1.1 - terminal-fusion
 Commit 7c75224:
-* Changed README to fit the new package name. 
+* Changed README to fit the new package name.
 
 ## 2.1.0 - terminal-fusion
 * Added `linux` theme
