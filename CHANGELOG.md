@@ -3,13 +3,13 @@ Commit [0c46af1](https://github.com/fusion809/terminal-fusion/commit/0c46af1):
 * Added space-pen to package.json list of dependencies.
 
 ## 2.3.0 - terminal-fusion
-Commit 49fd161:
+Commit [49fd161](https://github.com/fusion809/terminal-fusion/commit/49fd161):
 * Edit to README.md, adding mention of upstream project, platformio/platformio-atom-ide-terminal and Linux-only compatibility.
 * Removed compatibility with macOS and Windows NT from keymap and other sources.
 * Make minor, mostly aesthetic aesthetic changes to Coffee libraries (for example, making equal signs align).
 
 ## 2.2.3 - terminal-fusion
-* Adjusted pty.js dependency so that terminal-fusion, unlike platformio-ide-terminal, will work even when built against later versions of Electron (>v1.2.x). See tensor5/arch-atom#12 for details.
+* Adjusted pty.js dependency so that terminal-fusion, unlike platformio-ide-terminal, will work even when built against later versions of Electron (>v1.2.x). See [tensor5/arch-atom#12](tensor5/arch-atom#12) for details.
 
 ## 2.2.2 - terminal-fusion
 In commit 075aea4 the package's incompatibility with its upstream package, platformio-ide-terminal, was removed. So now terminal-fusion and platformio-ide-terminal can be installed simultaneously to one another.
