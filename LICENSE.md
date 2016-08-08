@@ -1,6 +1,6 @@
-Copyright (c) 2015 Jeremy Ebneyamin
-              2015-2016 PlatformIO
-              2016- Brenton Horne <brentonhorne77@gmail.com>
+Copyright (c) 2015 Jeremy Ebneyamin<br/>
+              2015-2016 PlatformIO<br/>
+              2016- Brenton Horne <brentonhorne77@gmail.com><br/><br/>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
