@@ -1,12 +1,15 @@
 {Task, CompositeDisposable, Emitter} = require 'atom'
-{$, View}                            = require 'atom-space-pen-views'
-Pty                                  = require.resolve './process'
-Terminal                             = require 'term.js'
-InputDialog                          = null
-path                                 = require 'path'
-os                                   = require 'os'
-lastOpenedView                       = null
-lastActiveElement                    = null
+{$, View} = require 'atom-space-pen-views'
+
+Pty = require.resolve './process'
+Terminal = require 'term.js'
+InputDialog = null
+
+path = require 'path'
+os = require 'os'
+
+lastOpenedView = null
+lastActiveElement = null
 
 module.exports =
 class TerminalFusionView extends View
@@ -21,7 +24,7 @@ class TerminalFusionView extends View
   tabView: false
 
   @content: ->
-    @div class: 'terminal-fusion terminal-view', outlet: 'terminalPlusView', =>
+    @div class: 'terminal-fusion terminal-view', outlet: 'terminalFusionView', =>
       @div class: 'panel-divider', outlet: 'panelDivider'
       @div class: 'btn-toolbar', outlet:'toolbar', =>
         @button outlet: 'closeBtn', class: 'btn inline-block-tight right', click: 'destroy', =>
@@ -408,18 +411,24 @@ class TerminalFusionView extends View
   paste: ->
     @input atom.clipboard.read()
 
-  insertSelection: ->
+  insertSelection: (customText) ->
     return unless editor = atom.workspace.getActiveTextEditor()
     runCommand = atom.config.get('terminal-fusion.toggles.runInsertedText')
-
+    selectionText = ''
     if selection = editor.getSelectedText()
       @terminal.stopScrolling()
-      @input "#{selection}#{if runCommand then os.EOL else ''}"
+      selectionText = selection
     else if cursor = editor.getCursorBufferPosition()
       line = editor.lineTextForBufferRow(cursor.row)
       @terminal.stopScrolling()
-      @input "#{line}#{if runCommand then os.EOL else ''}"
+      selectionText = line
       editor.moveDown(1);
+    @input "#{customText.
+      replace(/\$L/, "#{editor.getCursorBufferPosition().row + 1}").
+      replace(/\$F/, path.basename(editor?.buffer?.file?.path)).
+      replace(/\$D/, path.dirname(editor?.buffer?.file?.path)).
+      replace(/\$S/, selectionText).
+      replace(/\$\$/, '$')}#{if runCommand then os.EOL else ''}"
 
   focus: =>
     @resizeTerminalToView()

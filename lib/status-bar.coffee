@@ -34,8 +34,16 @@ class StatusBar extends View
       'terminal-fusion:close': => @destroyActiveTerm()
       'terminal-fusion:close-all': => @closeAll()
       'terminal-fusion:rename': => @runInActiveView (i) -> i.rename()
-      'terminal-fusion:insert-selected-text': => @runInActiveView (i) -> i.insertSelection()
+      'terminal-fusion:insert-selected-text': => @runInActiveView (i) -> i.insertSelection('$S')
       'terminal-fusion:insert-text': => @runInActiveView (i) -> i.inputDialog()
+      'terminal-fusion:insert-custom-text-1': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText1'))
+      'terminal-fusion:insert-custom-text-2': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText2'))
+      'terminal-fusion:insert-custom-text-3': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText3'))
+      'terminal-fusion:insert-custom-text-4': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText4'))
+      'terminal-fusion:insert-custom-text-5': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText5'))
+      'terminal-fusion:insert-custom-text-6': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText6'))
+      'terminal-fusion:insert-custom-text-7': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText7'))
+      'terminal-fusion:insert-custom-text-8': => @runInActiveView (i) -> i.insertSelection(atom.config.get('terminal-fusion.customTexts.customText8'))
       'terminal-fusion:fullscreen': => @activeTerminal.maximize()
 
     @subscriptions.add atom.commands.add '.xterm',
