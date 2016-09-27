@@ -1,9 +1,11 @@
 # Brenton's (fusion809) Terminal
 ![](http://i.imgur.com/qYa5q9S.png)
-A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it. It has been forked from the `platformio-ide-terminal` package, and is designed specifically for Linux platforms. If you are using macOS or Windows NT I would recommend using the `platformio-ide-terminal` package instead.
+A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it. It has been forked from the [`platformio-ide-terminal`](https://github.com/platformio/platformio-atom-ide-terminal) package, and is designed specifically for **Linux platforms**. If you are using macOS or Windows NT I would recommend using the `platformio-ide-terminal` package instead.
+
+## Purpose
+Naturally, one may wonder why I bothered creating this package, the reason why is because I wanted to apply the bug fixes mentioned in [tensor5/arch-atom#12](https://github.com/tensor5/arch-atom/issues/12), that would unfortunately break `platformio-ide-terminal`'s compatibility with macOS and Windows NT. So I created this package, and as this fix made the package incompatible with macOS and Windows NT I decided to remove all parts of the package that were specific to these platforms, hence reducing its size a little. I also added my own custom theme to the package (the `linux` theme). This is an active fork, that is, I keep an eye on changes to the `platformio-ide-terminal` package and if relevant I bring them downstream to this package.
 
 ## Usage
-
 `terminal-fusion` stays in the bottom of your editor while you work.
 
 Click on a status icon to toggle that terminal (or ``ctrl-` ``). Right click the status icon for a list of available commands. From the right-click menu you can colour code the status icon as well as hide or close the terminal instance.
@@ -114,7 +116,7 @@ Installation can be performed from the command-line with:
 
 `$ apm install terminal-fusion`
 
-Or navigate to the install tab in Atom’s settings view, and search for `terminal-fusion`.
+Or navigate to the install tab in Atom’s settings view, and search for `terminal-fusion`. 
 
 ## Commands
 | Command | Action | Default Keybind |
