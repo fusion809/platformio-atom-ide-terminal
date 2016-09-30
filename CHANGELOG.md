@@ -1,3 +1,15 @@
+## [2.4.2 - terminal-fusion](https://github.com/fusion809/terminal-fusion/compare/v2.4.1...v2.4.2)
+Adjusting keywords, README and adding ISSUES_TEMPLATE.md and CONTRIBUTING.md (to prevent further issues like [#1](https://github.com/fusion809/terminal-fusion/issues/1), [#2](https://github.com/fusion809/terminal-fusion/issues/2) and [#3](https://github.com/fusion809/terminal-fusion/issues/3)).
+
+## [2.4.1 - terminal-fusion](https://github.com/fusion809/terminal-fusion/compare/v2.4.0...v2.4.1)
+Adjusting description to prevent further issues like [#1](https://github.com/fusion809/terminal-fusion/issues/1).
+
+## [2.4.0 - terminal-fusion](https://github.com/fusion809/terminal-fusion/compare/v2.3.1...v2.4.0)
+Commit [b3ed1c5](https://github.com/fusion89/terminal-fusion/commit/b3ed1c55b4aba50514689a4b48729ff7123aead4):
+* Bring upstream changes to v2.2.0 of platformio-ide-terminal downstream.
+
+Adjusted LICENSE header.
+
 ## [2.3.1 - terminal-fusion](https://github.com/fusion809/terminal-fusion/compare/v2.3.0...v2.3.1)
 Commit [0c46af1](https://github.com/fusion809/terminal-fusion/commit/0c46af1):
 * Added space-pen to package.json list of dependencies.
