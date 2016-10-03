@@ -60,7 +60,7 @@ Colour code your status icons!
 
 ![](https://github.com/fusion809/terminal-fusion/raw/master/resources/status-icon_color_coding.png)
 
-The colors are customizable in the settings, however the color names remain the same in the context menu.
+The colours are customizable in the settings, however the colour names remain the same in the context menu.
 
 ### Sorting
 Organize your open terminal instances by dragging and dropping them.
