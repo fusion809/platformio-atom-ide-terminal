@@ -116,7 +116,7 @@ Installation can be performed from the command-line with:
 
 `$ apm install terminal-fusion`
 
-Or navigate to the install tab in Atom’s settings view, and search for `terminal-fusion`. 
+Or navigate to the install tab in Atom’s settings view, and search for `terminal-fusion`. Per issue #5, it is important to note that `terminal-fusion` requires `g++` to be installed in order for it to be properly installed. `g++` can be installed via one's system package manager, such as APT for Debian-based distros (like deepin, elementary OS, Linux Mint, Ubuntu, Zorin OS, *etc.*), DNF for Fedora-based distros (like Chapeau and Korora), pacman for Arch Linux-based distros (like Antergos and Manjaro Linux), yum for older Red Hat-based distros (like CentOS, Oracle Linux, Scientific Linux and Red Hat Enterprise Linux) and ZYpp for openSUSE-based distros (like Gecko Linux and SUSE Linux Enterprise Server).
 
 ## Commands
 | Command | Action | Default Keybind |
