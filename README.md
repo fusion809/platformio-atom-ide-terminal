@@ -77,7 +77,7 @@ You can set the default working directory for new terminals. By default this wil
 Dropping a file on the terminal will insert the file path into the input. This works with external files, tabs from the Atom tab-view, and entries from the Atom tree-view.
 
 ### Insert Selected Text
-Insert and run selected text from your text editor by running the `terminal-fusion:insert-selected-text` command (`ctrl-enter`).
+Insert and run selected text from your text editor by running the `terminal-fusion:insert-selected-text` command (`ctrl-shift-E`).
 
 ![](https://github.com/fusion809/terminal-fusion/raw/master/resources/insert_selected_text.gif)
 
@@ -125,7 +125,7 @@ Or navigate to the install tab in Atom’s settings view, and search for `termin
 | terminal-fusion:toggle | Toggle the last active terminal instance.<br>**Note:** This will create a new terminal if it needs to. | `` ctrl-` ``<br>(Control + Backtick) |
 | terminal-fusion:prev | Switch to the terminal left of the last active terminal. | `ctrl-shift-j`<br>or<br>`cmd-shift-j` |
 | terminal-fusion:next | Switch to the terminal right of the last active terminal. | `ctrl-shift-k`<br>or<br>`cmd-shift-k` |
-| terminal-fusion:insert-selected-text | Run the selected text as a command in the active terminal. | `ctrl-enter` |
+| terminal-fusion:insert-selected-text | Run the selected text as a command in the active terminal. | `ctrl-shift-E` |
 | terminal-fusion:insert-text | Bring up an input box for using IME and special keys. | –––––––––––– |
 | terminal-fusion:fullscreen | Toggle full-screen for active terminal. | –––––––––––– |
 | terminal-fusion:close | Close the active terminal. | `ctrl-shift-x`<br>or<br>`cmd-shift-x` |
