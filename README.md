@@ -1,4 +1,4 @@
-# Brenton's (fusion809) Terminal
+# fusion809's Terminal
 ![](http://i.imgur.com/qYa5q9S.png)
 A terminal package for Atom, complete with themes, API and more. My name in its title does not indicate that I did all the work, rather just indicates that it has some of my preferences applied to it. It has been forked from the [`platformio-ide-terminal`](https://github.com/platformio/platformio-atom-ide-terminal) package, and is designed specifically for **Linux platforms**. If you are using macOS or Windows NT I would recommend using the `platformio-ide-terminal` package instead.
 
